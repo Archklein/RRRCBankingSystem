@@ -9,14 +9,28 @@ public class RRRCBankingSystem {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("TAGO PISO BAnkING SYSTEM");
+        System.out.println("RRRCBankingSystem");
         System.out.println("------------------------");
 
         // The Banking Logic
         while (true) {
             String newName = "";
-            double balance = 500;
+            double balance = 0.0;
             while (true) {
+                System.out.print("Add Initial Balance: ");
+                balance = scanner.nextDouble();
+                scanner.nextLine();
+
+                Thread.sleep(100);
+                System.out.println(GREEN + "Processing..." + RESET);
+                Thread.sleep(1000);
+                System.out.println("Balance Added: " + GREEN + "P" + balance + RESET);
+                Thread.sleep(1000);
+                System.out.println("Current Balance: " + GREEN + "P" + balance + RESET);
+                Thread.sleep(700);
+                System.out.println(GREEN + "Please Wait..." + RESET);
+                Thread.sleep(3000);
+
                 System.out.print("Enter Account Name: ");
                 newName = scanner.nextLine().trim();
 
