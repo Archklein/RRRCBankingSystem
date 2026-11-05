@@ -18,19 +18,26 @@ public class RRRCBankingSystem {
             double balance = 0.0;
             while (true) {
                 System.out.print("Add Initial Balance: ");
-                balance = scanner.nextDouble();
-                scanner.nextLine();
 
-                Thread.sleep(100);
-                System.out.println(GREEN + "Processing..." + RESET);
-                Thread.sleep(1000);
-                System.out.println("Balance Added: " + GREEN + "P" + balance + RESET);
-                Thread.sleep(1000);
-                System.out.println("Current Balance: " + GREEN + "P" + balance + RESET);
-                Thread.sleep(700);
-                System.out.println(GREEN + "Please Wait..." + RESET);
-                Thread.sleep(3000);
+                if (scanner.hasNextDouble()) {
+                    balance = scanner.nextDouble();
+                    scanner.nextLine();
 
+                    if (balance < 0 || balance == -1) {
+                        System.out.println(RED + "Error: Balance cannot be negative! Please try again." + RESET);
+                    } else {
+                        System.out.println(GREEN + "Please Wait..." + RESET);
+                        Thread.sleep(1000);
+                        break; // If the balance is VALID
+                    }
+                } else {
+                    System.out.println(RED + "Error: Invalid input! Please enter numbers only." + RESET);
+                    scanner.nextLine(); // Clear invalid text out of the buffer
+                    Thread.sleep(1000);
+                }
+            }
+
+            while (true) {
                 System.out.print("Enter Account Name: ");
                 newName = scanner.nextLine().trim();
 
@@ -181,7 +188,6 @@ public class RRRCBankingSystem {
 
                 else {
                     System.out.println(RED + "Invalid Option: Choose (1-4)" + RESET);
-
                 }
 
             }
